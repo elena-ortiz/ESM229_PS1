@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ###Part 0: Program file directory, initial conditions, parameters 
 #### Part 0a: Set file directory, clear workspace 
-```{r}
+```{r, echo=FALSE}
  #set your own directory here 
     setwd('~/Documents/UCSB/W22/Econ & Policy of CC/PS1/ESM229_PS1')
     rm(list=ls()) # clears workspace
@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = TRUE)
    
 
 ####Part 0b: Model parameters  
-```{r}
+```{r,echo=FALSE} 
 # Fixed Economic parameters (LEAVE THIS ALONE FOR NOW)
     p_saving<-c(.22) # output saved, default at 0.22
     p_capShare<-c(.3) # Cobb-Douglas capital share, default at 0.3
@@ -45,7 +45,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ###### Part 0c: Initial conditions (in 2010) ###### 
 
-```{r}
+```{r, echo=FALSE}
 # years
     p_years<-c(291)
 
@@ -84,7 +84,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ###Part 1: economic model 
 ####Part 1a: Getting exogenous changes in population, energy intensity, emissions intensity, TFP
 
-```{r}
+```{r, echo=FALSE}
  # initializing for first period    
     year[1]<-2010
     pop[1]<-ic_pop
@@ -106,7 +106,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ###Part 1b: Getting gross output, capital, emissions  
 
-```{r}
+```{r, echo=FALSE}
  # initializing for first period
     #Part 1: Economic model w/o climate damages
     K[1]<-ic_K
@@ -159,14 +159,12 @@ knitr::opts_chunk$set(echo = TRUE)
     }
 ```
 
-   
-  
 
 
 ###Part 4: plots
 
 
-```{r}
+```{r, echo=FALSE, fig.show='hide'}
 par(mfrow=c(3,2), mar=c(4,4,2,2))
 plot(year[2:j], em_MtCO2[2:j], ylab="Emissions (MtCO2")
 plot(year[2:j], CO2ppm[2:j], ylab="CO2 concentrations (ppm)")
@@ -186,7 +184,7 @@ plot(year[2:j], em_MtCO2[2:j], ylab="Emissions (MtCO2")
 ```
 ### Plot 2: No change in population 
 
-```{r}
+```{r, echo=FALSE}
 # Fixed Economic parameters (LEAVE THIS ALONE FOR NOW)
     p_saving<-c(.22) # output saved, default at 0.22
     p_capShare<-c(.3) # Cobb-Douglas capital share, default at 0.3
@@ -287,14 +285,18 @@ plot(year[2:j], em_MtCO2[2:j], ylab="Emissions (MtCO2")
       em_ppm[j]<-em_MtCO2[j]/7810 # convert to atmospheric CO2 concentrations
       
     } 
-#plot2
-par(mfrow=c(3,2), mar=c(4,4,2,2))
-plot(year[2:j], em_MtCO2[2:j], ylab="Emissions (MtCO2")  
   
 ```
+```{r}
+#plot2 no pop change
+par(mfrow=c(3,2), mar=c(4,4,2,2))
+plot(year[2:j], em_MtCO2[2:j], ylab="Emissions (MtCO2")
+```
+
+
 #### Plot 3: No change in emissions intensity
 
-```{r}
+```{r, echo=FALSE}
 # Fixed Economic parameters (LEAVE THIS ALONE FOR NOW)
     p_saving<-c(.22) # output saved, default at 0.22
     p_capShare<-c(.3) # Cobb-Douglas capital share, default at 0.3
@@ -399,9 +401,17 @@ plot(year[2:j], em_MtCO2[2:j], ylab="Emissions (MtCO2")
 par(mfrow=c(3,2), mar=c(4,4,2,2))
 plot(year[2:j], em_MtCO2[2:j], ylab="Emissions (MtCO2")  
 ```
-#### Plot 4: No change in energy intensity
 
 ```{r}
+#plot3 no IntEm change
+par(mfrow=c(3,2), mar=c(4,4,2,2))
+plot(year[2:j], em_MtCO2[2:j], ylab="Emissions (MtCO2")
+```
+
+
+#### Plot 4: No change in energy intensity
+
+```{r, echo=FALSE}
 # Fixed Economic parameters (LEAVE THIS ALONE FOR NOW)
     p_saving<-c(.22) # output saved, default at 0.22
     p_capShare<-c(.3) # Cobb-Douglas capital share, default at 0.3
@@ -502,16 +512,23 @@ plot(year[2:j], em_MtCO2[2:j], ylab="Emissions (MtCO2")
       em_ppm[j]<-em_MtCO2[j]/7810 # convert to atmospheric CO2 concentrations
       
     } 
-#plot4
+
+```
+
+
+```{r}
+#plot4 no InEn change
 par(mfrow=c(3,2), mar=c(4,4,2,2))
 plot(year[2:j], em_MtCO2[2:j], ylab="Emissions (MtCO2")
 ```
+
+
 CO2 emissions decrease under scenarios 2 and 3 relative to the BAU scenario. The emissions in scenario 4 appear to be nearly the same as the BAU case.  
 
 ### *Part 2*
 
 #### Part i: emissions intensity not exceeding 2 degrees C
-```{r}
+```{r, echo=FALSE}
 # Fixed Economic parameters (LEAVE THIS ALONE FOR NOW)
     p_saving<-c(.22) # output saved, default at 0.22
     p_capShare<-c(.3) # Cobb-Douglas capital share, default at 0.3
@@ -625,15 +642,16 @@ CO2 emissions decrease under scenarios 2 and 3 relative to the BAU scenario. The
     } 
 ```
 
-Plot
-```{r}
+
+```{r, echo=FALSE}
+#plot
 plot(year[2:j], Teq[2:j], ylab="Equilibrium temperature (C)")
 ```
 The maximum rate of change of emissions intensity is between 0.018-0.019 to avoid exceeding 2 degrees C.  
 
 
 #### Part ii: energy intensity not exceeding 2 degrees C
-```{r}
+```{r, echo=FALSE}
 # Fixed Economic parameters (LEAVE THIS ALONE FOR NOW)
     p_saving<-c(.22) # output saved, default at 0.22
     p_capShare<-c(.3) # Cobb-Douglas capital share, default at 0.3
@@ -747,15 +765,15 @@ The maximum rate of change of emissions intensity is between 0.018-0.019 to avoi
     }
 ```
 
-Plot 
-```{r}
+```{r, echo=FALSE}
+#plot
 plot(year[2:j], Teq[2:j], ylab="Equilibrium temperature (C)")
 ```
 The rate of change of energy intensity cannot exceed about 0.013-0.014 in order to keep equilibrium temperatures below 2 degrees C.  
 
 #### Part iii: emissions intensity for lower and upper ECS bounds
 
-```{r}
+```{r, echo=FALSE}
 # Fixed Economic parameters (LEAVE THIS ALONE FOR NOW)
     p_saving<-c(.22) # output saved, default at 0.22
     p_capShare<-c(.3) # Cobb-Douglas capital share, default at 0.3
@@ -875,7 +893,7 @@ plot(year[2:j], Teq[2:j], ylab="Equilibrium temperature (C)")
 ```
 The maximum rate of change for emissions intensity is about 0.0285 for the lower bounds. 
 
-```{r}
+```{r, echo=FALSE}
 # Fixed Economic parameters (LEAVE THIS ALONE FOR NOW)
     p_saving<-c(.22) # output saved, default at 0.22
     p_capShare<-c(.3) # Cobb-Douglas capital share, default at 0.3
@@ -994,12 +1012,12 @@ Upper bounds plot
 plot(year[2:j], Teq[2:j], ylab="Equilibrium temperature (C)") 
 ```
 
-About -2.0 but it gets really screwy here...
+The maximum rate of change for the upper bounds is about -2.0, however, the bifurcation of the plot indicates that this is not achievable. ADD SOMETHING ABOUT NEGATIVE EMISSIONS?
 
 #### Part iv: energy intensity for lower and upper ECS bounds 
 
 
-```{r}
+```{r, echo=FALSE}
 # Fixed Economic parameters (LEAVE THIS ALONE FOR NOW)
     p_saving<-c(.22) # output saved, default at 0.22
     p_capShare<-c(.3) # Cobb-Douglas capital share, default at 0.3
@@ -1113,13 +1131,13 @@ About -2.0 but it gets really screwy here...
     }  
 ```
 
-lower bounds plot
+Lower bounds plot
 ```{r}
 plot(year[2:j], Teq[2:j], ylab="Equilibrium temperature (C)")
 ```
-About .023 max rate of change for energy intensity in the lower bounds scenario.
+About .023 is the maximum rate of change for energy intensity in the lower bounds scenario to maintain warming under 2 degrees C.
 
-```{r}
+```{r, echo=FALSE}
 # Fixed Economic parameters (LEAVE THIS ALONE FOR NOW)
     p_saving<-c(.22) # output saved, default at 0.22
     p_capShare<-c(.3) # Cobb-Douglas capital share, default at 0.3
@@ -1233,17 +1251,17 @@ About .023 max rate of change for energy intensity in the lower bounds scenario.
     } 
 ```
 
-upper bounds plot 
+Upper bounds plot 
 
 ```{r}
 plot(year[2:j], Teq[2:j], ylab="Equilibrium temperature (C)")
 ```
-Approximately max. rate of change of -1.9 but it gets wonky, not realistic 
+Approximately -1.9 is the max. rate of change of change. This indicates that this may not be achievable, SOMETHING ABOUT NEGATIVE EMISSIONS? 
 
 ### *Part 3*: Social cost of carbon 
 
-BAU damages 
-```{r}
+####BAU damages 
+```{r, echo=FALSE}
 # Fixed Economic parameters (LEAVE THIS ALONE FOR NOW)
     p_saving<-c(.22) # output saved, default at 0.22
     p_capShare<-c(.3) # Cobb-Douglas capital share, default at 0.3
@@ -1266,7 +1284,7 @@ BAU damages
 
     
 
-```{r}
+```{r, echo=FALSE}
 # years
     p_years<-c(291)
 
@@ -1367,19 +1385,21 @@ BAU damages
       C_pc[j]<-(C[j]/pop[j])*1000 #per capita consumption     
     }
     
-   bau_damages <- climateDamage[j]  #save bau annual damages as a vector 
+   bau_damages <- as.data.frame(climateDamage) #save bau annual damages as a vector
+   write.csv(bau_damages,"BAU.csv", row.names = FALSE)
 ```
 
-Extra emissions scenario 
+###Extra emissions scenario 
 
-```{r}
+```{r, echo=FALSE}
 # years
     p_years<-c(291)
 
     # Economic
     ic_pop<-c(6900) # in millions
     ic_enInt<-c(5.98) # in EJ/$trill
-    ic_emInt<-c(68.27) # in Mt CO2 /EJ ADD .000001 here? = 1 ton           
+    ic_emInt<-c(68.27) # in Mt CO2 /EJ
+    
     ic_K<-c(139.65) # $trill   
     ic_TFP<-c(.03)
 
@@ -1406,7 +1426,7 @@ Extra emissions scenario
     Teq<-matrix(0,p_years,1)
     climateDamage<-matrix(0,p_years,1) 
     extra_em<-matrix(0,p_years,1)
-    extra_em[2]<-(0.000001)
+  
 
 # initializing for first period    
     year[1]<-2010
@@ -1415,14 +1435,7 @@ Extra emissions scenario
     emInt[1]<-ic_emInt
     TFP[1]<-ic_TFP
     
-# for year 2
-    year[2]<-2011
-    pop[2]<-ic_pop
-    enInt[2]<-ic_enInt    
-    emInt[2]<-ic_emInt
-    TFP[2]<-ic_TFP
-    
-    for (j in 3:p_years) {
+    for (j in 2:p_years) {
       year[j]<-year[j-1]+1
       pop[j]=pop[j-1]*(1+p_pop_g)
       enInt[j]=enInt[j-1]*(1+p_enInt_g)
@@ -1430,7 +1443,7 @@ Extra emissions scenario
       TFP[j]=TFP[j-1]*(1+p_TFP_g)
     }
       
-       # initializing for first period (BAU)
+       # initializing for first period
     #Part 1: Economic model w/o climate damages
     K[1]<-ic_K
     Y_gross[1]<-TFP[1]*K[1]^p_capShare*pop[1]^(1-p_capShare)
@@ -1459,7 +1472,8 @@ Extra emissions scenario
       gdppc[j]=Y_gross[j]/pop[j]
 
       #emissions
-      em_MtCO2[j]<-pop[j]*gdppc[j]*enInt[j]*emInt[j] + extra_em[j] #Kaya identity: ADDED .000001 here
+      em_MtCO2[j]<-pop[j]*gdppc[j]*enInt[j]*emInt[j]+extra_em[j] #Kaya identity
+      em_MtCO2[2]<-pop[j]*gdppc[j]*enInt[j]*emInt[j]+.000001 # add the bump from 2011
       em_ppm[j]<-em_MtCO2[j]/7810 # convert to atmospheric CO2 concentrations
       
       #Part 2: climate model     
@@ -1481,6 +1495,12 @@ Extra emissions scenario
       C_pc[j]<-(C[j]/pop[j])*1000 #per capita consumption     
     }
     
-   extra_damages <- Y_net[j]  #save extra damages as a vector 
+   marginal_damages <- as.data.frame(climateDamage) #save extra damages as a vector 
+   write.csv(marginal_damages,"marginal.csv", row.names = FALSE)
+  
 ```
+
+#### Calculating the social cost of carbon 
+
+Under a 1.5% discount rate, the SCC is $252/ton of CO2. Under a 3% discount rate, the SCC is about $30.20/ton of CO2. The spread in values is due to the varying discount rates (DR). The lower DR places a higher value on future climate damages than the 3% DR, so that each year is associated with higher damage costs. These costs are higher at earlier time periods and accrue to a higher total value than the 3% rate.  
 
